@@ -72,3 +72,8 @@ CREATE TRIGGER tax_id_with_state
   ON dealerships
   FOR EACH ROW
   EXECUTE PROCEDURE set_tax_id();
+
+  insert into dealerships (business_name, phone, city, state, tax_id)
+	values ('carzzz', '555-555-9999', 'Nashville', 'Tennessee', 'ok-555-px-gq6b');
+
+select * from dealerships where tax_id like '%ten%';
