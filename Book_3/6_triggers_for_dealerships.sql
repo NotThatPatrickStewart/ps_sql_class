@@ -50,3 +50,19 @@ insert into dealerships (business_name, city, state, website, tax_id)
 	values ('carz_again', 'Nashville', 'Tennessee', 'http://www.carnivalcars.com/carz', 'po-098-px-gq6b');
 
 select * from dealerships d where business_name like 'carz_again';
+
+
+--For accounting purposes, the name of the state needs to be part of the dealership's tax id.
+--For example, if the tax id provided is bv-832-2h-se8w for a dealership in Virginia, then it needs to be put into the database as bv-832-2h-se8w--virginia.
+
+CREATE or replace FUNCTION set_tax_id()
+  RETURNS TRIGGER
+  LANGUAGE PlPGSQL
+AS $$
+BEGIN
+  UPDATE dealerships
+  SET tax_id = CONCAT(new.tax_id, '--', lower(new.state))
+  where dealerships.dealership_id = new.dealership_id;
+  RETURN NULL;
+END;
+$$
