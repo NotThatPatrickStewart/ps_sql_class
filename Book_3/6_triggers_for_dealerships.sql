@@ -14,3 +14,9 @@ BEGIN
   RETURN NULL;
 END;
 $$
+
+CREATE TRIGGER new_dealership_website
+  AFTER INSERT
+  ON dealerships
+  FOR EACH ROW
+  EXECUTE PROCEDURE set_dealership_url();
