@@ -23,3 +23,5 @@ CREATE TRIGGER new_dealership_website
 
   insert into dealerships (business_name, phone, city, state, tax_id)
 	values ('carzzz', '615-999-9990', 'Nashville', 'Tennessee', 'px-209-px-gq6b');
+
+select * from dealerships where phone like '615-999-9990';
