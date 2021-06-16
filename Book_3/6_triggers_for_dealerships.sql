@@ -39,3 +39,14 @@ BEGIN
   RETURN NULL;
 END;
 $$
+
+create trigger dealership_phone_default
+	after insert 
+	on dealerships
+	for each row
+	execute procedure set_default_phone_number();
+
+insert into dealerships (business_name, city, state, website, tax_id)
+	values ('carz_again', 'Nashville', 'Tennessee', 'http://www.carnivalcars.com/carz', 'po-098-px-gq6b');
+
+select * from dealerships d where business_name like 'carz_again';
