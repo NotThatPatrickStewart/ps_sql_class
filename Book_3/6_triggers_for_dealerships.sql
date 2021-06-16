@@ -66,3 +66,9 @@ BEGIN
   RETURN NULL;
 END;
 $$
+
+CREATE TRIGGER tax_id_with_state
+  AFTER INSERT
+  ON dealerships
+  FOR EACH ROW
+  EXECUTE PROCEDURE set_tax_id();
