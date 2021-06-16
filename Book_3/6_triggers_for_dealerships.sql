@@ -25,3 +25,17 @@ CREATE TRIGGER new_dealership_website
 	values ('carzzz', '615-999-9990', 'Nashville', 'Tennessee', 'px-209-px-gq6b');
 
 select * from dealerships where phone like '615-999-9990';
+
+
+--If a phone number is not provided for a new dealership, set the phone number to the default customer care number 777-111-0305.
+CREATE or replace FUNCTION set_default_phone_number()
+  RETURNS TRIGGER
+  LANGUAGE PlPGSQL
+AS $$
+BEGIN
+  UPDATE dealerships
+  set phone = '777-111-0305'
+  where phone is NULL;
+  RETURN NULL;
+END;
+$$
