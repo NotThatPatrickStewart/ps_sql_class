@@ -20,3 +20,6 @@ CREATE TRIGGER new_dealership_website
   ON dealerships
   FOR EACH ROW
   EXECUTE PROCEDURE set_dealership_url();
+
+  insert into dealerships (business_name, phone, city, state, tax_id)
+	values ('carzzz', '615-999-9990', 'Nashville', 'Tennessee', 'px-209-px-gq6b');
