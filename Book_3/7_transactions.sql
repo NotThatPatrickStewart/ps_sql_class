@@ -257,3 +257,26 @@ insert into dealershipemployees
 		newemployeeid,
 		newdealershipid
 	);
+
+    --All employees that currently work at Nelsen Autos of Illinois will now start working at Cain Autos of Missouri instead.*/
+update dealershipemployees de
+set dealership_id = (
+	select
+		dealership_id
+		from dealerships d
+		where d.business_name ilike '%Cain Autos of Missouri')
+where dealership_id = (
+	select
+		dealership_id
+		from dealerships d
+		where d.business_name ilike '%Nelsen Autos of Illinois'
+);
+END;
+$$ language plpgsql;
+
+
+select * from dealerships d where dealership_id = 4;
+
+select *
+from employees e 
+where e.first_name = 'Curly';
