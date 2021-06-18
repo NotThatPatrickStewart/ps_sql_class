@@ -195,3 +195,16 @@ insert into
 	
 end;
 $$ language plpgsql;
+
+
+-- Creating a new dealership in Washington, D.C. called Felphun Automotive
+-- Hire 3 new employees for the new dealership: Sales Manager, General Manager and Customer Service.
+-- All employees that currently work at Nelsen Autos of Illinois will now start working at Cain Autos of Missouri instead.
+
+do $$
+declare
+	newdealershipid int;
+	newemployeeid int;
+begin 
+	INSERT INTO dealerships
+(business_name, phone, city, state, website, tax_id)
