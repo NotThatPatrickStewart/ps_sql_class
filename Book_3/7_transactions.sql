@@ -208,3 +208,12 @@ declare
 begin 
 	INSERT INTO dealerships
 (business_name, phone, city, state, website, tax_id)
+
+VALUES(
+'Felphun Automotive', 
+'555-555-5555', 
+'Washington D.C', 
+'D.C', 
+'http://www.carnivalcars.com/felphunautomotive', 
+'dc-749-iz-2m08')
+returning dealership_id into newdealershipid;
