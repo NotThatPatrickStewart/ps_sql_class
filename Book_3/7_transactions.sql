@@ -217,3 +217,43 @@ VALUES(
 'http://www.carnivalcars.com/felphunautomotive', 
 'dc-749-iz-2m08')
 returning dealership_id into newdealershipid;
+
+INSERT INTO employees
+(first_name, last_name, email_address, phone, employee_type_id)
+VALUES('Curly', 'Howard', 'curly@stooges.com', '555-555-5555', 3)
+returning employee_id into newemployeeid;
+insert into dealershipemployees
+		(
+		employee_id,
+		dealership_id 
+		)
+	values (
+		newemployeeid,
+		newdealershipid
+	);
+INSERT INTO employees
+(first_name, last_name, email_address, phone, employee_type_id)
+VALUES('Mo', 'Howard', 'mo@stooges.com', '123-123-1234', 6)
+returning employee_id into newemployeeid;
+insert into dealershipemployees 
+		(
+		employee_id,
+		dealership_id 
+		)
+	values (
+		newemployeeid,
+		newdealershipid
+	);
+INSERT INTO employees
+(first_name, last_name, email_address, phone, employee_type_id)
+VALUES('Larry', 'Howard', 'larry@stooges.com', '123-123-1234', 4)
+returning employee_id into newemployeeid;
+insert into dealershipemployees 
+		(
+		employee_id,
+		dealership_id 
+		)
+	values (
+		newemployeeid,
+		newdealershipid
+	);
