@@ -110,3 +110,8 @@ create trigger check_purcahse_date
 	on sales
 	for each row
 	execute procedure variable_pickup_date();
+
+    	insert into sales (sales_type_id, vehicle_id, employee_id, customer_id, dealership_id, price, deposit, purchase_date, pickup_date, invoice_number, payment_method, sale_returned)
+ 	values (1, 1008, 497, 834, 27, 27000, 3000, '2021-06-02', '2021-06-03', '897215800', 'mastercard', false);
+ 
+ select * from sales where invoice_number = '897215800';
