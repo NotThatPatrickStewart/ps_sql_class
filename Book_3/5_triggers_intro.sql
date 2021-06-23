@@ -24,3 +24,6 @@ CREATE TRIGGER new_sale_made
  	values (1, 10000, 497, 834, 27, 27000, 3000, '2021-06-07', '4684684465', 'mastercard', false);
  	
 select * from sales where invoice_number = '4684684465';
+
+
+--Create a trigger for when a new Sales record is added, set the purchase date to 3 days from the current date.
