@@ -40,3 +40,9 @@ begin
 	return null;
 end;
 $$
+
+create trigger new_purchase_made
+	after insert 
+	on sales
+	for each row
+	execute procedure set_purchase_date();
