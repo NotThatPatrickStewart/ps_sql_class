@@ -82,3 +82,25 @@ CREATE TRIGGER new_sale_made_all_dates
 
  --Create a trigger for updates to the Sales table. If the pickup date is on or before the purchase date, set the pickup date to 7 days after the purchase date.
 --If the pickup date is after the purchase date but less than 7 days out from the purchase date, add 4 additional days to the pickup date.
+
+create or replace function variable_pickup_date()
+	returns trigger 
+	language plpgsql
+as $$
+begin 
+	if (new.pickup_date <= new.purchase_date + integer '7'
+	and new.pickup_date > new.purchase_date)
+	then
+		 update sales
+		 set pickup_date = NEW.purchase_date + integer '4'
+		 where sales.sale_id = NEW.sale_id;
+	elseif
+	(new.pickup_date <= new.purchase_date)
+	then
+	update sales
+	set pickup_date = new.purchase_date + integer '7'
+ 	where sales.sale_id = NEW.sale_id;
+ end if;
+return null;
+end;
+$$
