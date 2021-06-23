@@ -104,3 +104,9 @@ begin
 return null;
 end;
 $$
+
+create trigger check_purcahse_date
+	after insert 
+	on sales
+	for each row
+	execute procedure variable_pickup_date();
