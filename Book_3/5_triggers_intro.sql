@@ -46,3 +46,8 @@ create trigger new_purchase_made
 	on sales
 	for each row
 	execute procedure set_purchase_date();
+
+insert into sales (sales_type_id, vehicle_id, employee_id, customer_id, dealership_id, price, deposit, invoice_number, payment_method, sale_returned)
+ 	values (1, 594, 497, 834, 27, 27000, 3000, '897918566', 'mastercard', false);
+ 	
+ select * from sales where invoice_number = '897918566';
