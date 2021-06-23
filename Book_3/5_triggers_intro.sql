@@ -51,3 +51,19 @@ insert into sales (sales_type_id, vehicle_id, employee_id, customer_id, dealersh
  	values (1, 594, 497, 834, 27, 27000, 3000, '897918566', 'mastercard', false);
  	
  select * from sales where invoice_number = '897918566';
+
+
+ --Both?
+
+create or replace function set_purchase_and_pickup_dates()
+	returns trigger
+	language plpgsql
+as $$
+begin
+	update sales 
+	set purchase_date = current_date + integer '3', pickup_date = current_date + integer '7'
+	where sales.sale_id = new.sale_id;
+
+	return null;
+end;
+$$
