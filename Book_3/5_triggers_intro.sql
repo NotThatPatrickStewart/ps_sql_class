@@ -1,0 +1,1 @@
+--Create a trigger for when a new Sales record is added, set the pickup date to 7 days from the purchase date.
