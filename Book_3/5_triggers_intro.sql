@@ -78,3 +78,7 @@ CREATE TRIGGER new_sale_made_all_dates
  	values (1, 1006, 497, 834, 27, 27000, 3000, '8791234555', 'mastercard', false);
  
  select * from sales where invoice_number = '8791234555';
+
+
+ --Create a trigger for updates to the Sales table. If the pickup date is on or before the purchase date, set the pickup date to 7 days after the purchase date.
+--If the pickup date is after the purchase date but less than 7 days out from the purchase date, add 4 additional days to the pickup date.
