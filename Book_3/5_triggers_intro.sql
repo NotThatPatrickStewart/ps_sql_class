@@ -73,3 +73,8 @@ CREATE TRIGGER new_sale_made_all_dates
   ON sales
   FOR EACH ROW
   EXECUTE PROCEDURE set_purchase_and_pickup_dates();
+
+   insert into sales (sales_type_id, vehicle_id, employee_id, customer_id, dealership_id, price, deposit, invoice_number, payment_method, sale_returned)
+ 	values (1, 1006, 497, 834, 27, 27000, 3000, '8791234555', 'mastercard', false);
+ 
+ select * from sales where invoice_number = '8791234555';
