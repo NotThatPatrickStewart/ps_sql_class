@@ -13,3 +13,9 @@ BEGIN
   RETURN NULL;
 END;
 $$
+
+CREATE TRIGGER new_sale_made
+  AFTER INSERT
+  ON sales
+  FOR EACH ROW
+  EXECUTE PROCEDURE set_pickup_date();
