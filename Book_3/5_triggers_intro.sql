@@ -67,3 +67,9 @@ begin
 	return null;
 end;
 $$
+
+CREATE TRIGGER new_sale_made_all_dates
+  AFTER INSERT
+  ON sales
+  FOR EACH ROW
+  EXECUTE PROCEDURE set_purchase_and_pickup_dates();
