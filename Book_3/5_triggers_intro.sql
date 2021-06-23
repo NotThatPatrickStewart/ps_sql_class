@@ -27,3 +27,16 @@ select * from sales where invoice_number = '4684684465';
 
 
 --Create a trigger for when a new Sales record is added, set the purchase date to 3 days from the current date.
+
+create or replace function set_purchase_date()
+	returns trigger
+	language plpgsql
+as $$
+begin
+	update sales 
+	set purchase_date = current_date + integer '3'
+	where sales.sale_id = new.sale_id;
+
+	return null;
+end;
+$$
