@@ -8,3 +8,17 @@ declare
 	newmake int;
 	newmodel int;
 	newtypeid int;
+
+    begin
+insert into vehiclebodytypes(name)
+values('CUV')
+returning vehicle_body_type_id into newvehicletype;
+insert into vehiclemakes(name)
+values('Honda')
+returning vehicle_make_id into newmake;
+insert into vehiclemodels(name)
+values('CR-V')
+returning vehicle_model_id into newmodel;
+insert into vehicletypes(vehicle_body_type_id, vehicle_make_id, vehicle_model_id)
+values(newvehicletype, newmake, newmodel)
+returning vehicle_type_id into newtypeid;
