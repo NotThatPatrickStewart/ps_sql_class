@@ -103,3 +103,64 @@ newtypeid,
 false, 
 true, 
 4);
+
+--4
+insert into vehicles 
+(vin, 
+engine_type, 
+vehicle_type_id, 
+exterior_color, 
+interior_color, 
+floor_price, 
+msr_price, 
+miles_count, 
+year_of_car, 
+is_sold, is_new, 
+dealership_location_id)
+VALUES(
+'ppfgzr0dsvmWKE', 
+'I4', 
+newtypeid, 
+'navy', 
+'beige', 
+21755, 
+18999, 
+0, 
+2021, 
+false, 
+true, 
+4);
+
+--5
+insert into vehicles 
+(vin, 
+engine_type, 
+vehicle_type_id, 
+exterior_color, 
+interior_color, 
+floor_price, 
+msr_price, 
+miles_count, 
+year_of_car, 
+is_sold, is_new, 
+dealership_location_id)
+VALUES(
+'Silasd5fea45dscv', 
+'I4', 
+newtypeid, 
+'sand', 
+'beige', 
+21755, 
+18999, 
+0, 
+2021, 
+false, 
+true,
+4);
+end;
+$$
+language plpgsql;
+
+
+select *
+from vehicle
