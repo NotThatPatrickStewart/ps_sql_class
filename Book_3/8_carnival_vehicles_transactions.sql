@@ -199,3 +199,23 @@ where v.vehicle_model_id = 5 or v.vehicle_model_id = 6;
 select * from vehicles v 
 where v.vehicle_type_id = 3 or v.vehicle_type_id = 6 or v.vehicle_type_id = 9
 and v.is_sold = false;
+
+
+--The vehicle with VIN KNDPB3A20D7558809 is about to be returned.
+--Carnival has a pretty cool program where it offers the returned vehicle to the
+-- most recently hired employee at 70% of the cost it previously sold for.
+--The most recent employee accepts this offer and will purchase the vehicle once it is returned.
+--The employee and dealership who sold the car originally will be on the new sales transaction.
+
+do $$ 
+declare
+most_recent_hire_id int;
+returned_vehicle_id int;
+original_sale_id int;
+customer_first_name varchar;
+customer_last_name varchar;
+customer_email_address varchar;
+customer_phone varchar;
+new_sale_employee_id int;
+new_sale_dealership_id int;
+new_customer_id int;
