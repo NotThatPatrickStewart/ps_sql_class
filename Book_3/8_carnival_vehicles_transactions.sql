@@ -178,3 +178,24 @@ from vehiclemodels vm
 join vehicletypes vt on vm.vehicle_model_id = vt.vehicle_model_id 
 join vehicles v on vt.vehicle_type_id = v.vehicle_type_id 
 where vm.name like 'CX-5' or vm.name like 'CX-9');
+
+update vehicles v 
+set year_of_car = 2020
+where year_of_car < 2020 and is_sold = false and v.vehicle_type_id in (select v.vehicle_type_id 
+from vehiclemodels vm
+join vehicletypes vt on vm.vehicle_model_id = vt.vehicle_model_id 
+join vehicles v on vt.vehicle_type_id = v.vehicle_type_id 
+where vm.name like 'CX-5' or vm.name like 'CX-9');
+
+end;
+$$ language plpgsql;
+	
+select * from vehiclemodels v
+where v.name ilike 'cx%';
+
+select * from vehicletypes v
+where v.vehicle_model_id = 5 or v.vehicle_model_id = 6;
+
+select * from vehicles v 
+where v.vehicle_type_id = 3 or v.vehicle_type_id = 6 or v.vehicle_type_id = 9
+and v.is_sold = false;
