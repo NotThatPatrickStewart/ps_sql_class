@@ -22,3 +22,30 @@ returning vehicle_model_id into newmodel;
 insert into vehicletypes(vehicle_body_type_id, vehicle_make_id, vehicle_model_id)
 values(newvehicletype, newmake, newmodel)
 returning vehicle_type_id into newtypeid;
+
+-- 1
+insert into vehicles 
+(vin, 
+engine_type, 
+vehicle_type_id, 
+exterior_color, 
+interior_color, 
+floor_price, 
+msr_price, 
+miles_count, 
+year_of_car, 
+is_sold, is_new, 
+dealership_location_id)
+VALUES(
+'3452345fea45dscv', 
+'I4', 
+newtypeid, 
+'lilac', 
+'beige', 
+21755, 
+18999, 
+0, 
+2021, 
+false, 
+true, 
+4);
